@@ -593,9 +593,12 @@ ggplot(ImpData, aes(x=Var.Names, y=`%IncMSE`)) +
 ```
 
 # 9 Final summary
+- As we can see  from most of our graphs, out of the 6 variables we have we found that age, BMI and smoker variables were the explanatory variables that affected the value of our dependent variable charge the most. From our final regression model we chose, we can also see that the p values for bmi, log(age), smoker, and the interaction term bmi*smoker etc were very small values showing that they were significant. Even from preliminary visual plots(1.3b), we have seen how the interaction of BMI with smoker could change the value of charges. A smoker with high BMI typically has higher charges. As we would expect, our random forest model also gave us similar conclusion when it comes to choosing the most important explanatory variables as depicted in the random forest model plot showing the important variables. So based on our regression models, preliminary visual plots and random forest model we conclude that an old smoker person who has a high BMI would likely pay the highest medical charges. 
+
+- It was also important to note that our random forest model performed very similar to our best regression model in terms of r squared (80-82 %) and in terms of residual error or root mean square(4900-5000). However, we have tried several regression model when we use the function ols_step_all_possible and insert several interaction terms and transformed functions. By using that function we have tried over 1000 different models and choose the best one. However, we only played with two or three random forest models since they are typically slower. If we have used different tuning for our random forest model, we might have got even better r squared and smaller root mean squared error
 
 ```{r}
-# ?????????????
+# 
 
 
 ```
