@@ -17,7 +17,7 @@ theme: cerulean
 "I am not what happened to me, I am what I choose to become"
 by Christopher Gardner, The Pursuit of Happiness.
 
-It is always a pleasure to remember the fine people who guided me in the Regression program. I received to uphold my practical and theoretical skills during the respective session. Firstly, I would like to thank **Pro. James C. Dickens** and secondly, I want to thank my family & friends for their love, motivation, and support during this semester in American university. Thanks for all the ideas, opinions, knowledge, and suggestions given to me to help me to complete this report. We are very thankful to American University for giving us the opportunity to pursue this project.
+It is always a pleasure to remember the fine people who guided us in the Regression program. We received to uphold our practical and theoretical skills during the respective session. Firstly, we would like to thank **Pro. James C. Dickens** and secondly, we want to thank our family & friends for their love, motivation, and support during this semester in American university. Thanks for all the ideas, opinions, knowledge, and suggestions given to us to help us  complete this report. We are very thankful to American University for giving us the opportunity to pursue this project.
 
 ***
 \newpage
@@ -41,6 +41,8 @@ Mekdim Ashebo                         STAT -615
 
 ```{r,warning=FALSE,message=FALSE }
 # calling all the libraries used in the code book 
+# Install this for latex pdf output. 
+#tinytex::install_tinytex()
 library(olsrr)
 library(tidyverse)
 library(dbplyr)
@@ -408,7 +410,7 @@ Still working to find the best parameters to be included in the model.
 ```{r}
 confint(AB,level = 0.95)
 ```
-# 7  Reduced Model 
+# 7  Full and Reduced Model for transformed variables with interaction terms
 
 ## 7.1  Evaluating Various regression models. 
 
@@ -420,11 +422,11 @@ as_tibble(allmodels) -> allmodels_1
 tail(allmodels_1,8)
 
 # the best model is represented by including all age, children,bmi, region, smoker full model.
-knitr::include_graphics("C:/Users/Dhruv Jain/Desktop/1.png")
+knitr::include_graphics("./1.png")
 # plot(allmodels)
 ```
 
-## 7.2 Finding Reduce model   
+## 7.2 Finding Reduced and full model using interaction terms  
 
 -    Let us see how r will create dummy variables for us using Region variable.
 R will convert the categorical variables for us We can see R will do this automatically for us creating these dummy variables. Northeast is essentially the control variable. When the three variables are 0, it means that region is northeast! No need to bother here as R does this for us.
@@ -452,6 +454,7 @@ lm(log(charges)~ age + children + bmi +
    + sex:smoker, insurance_new) -> interactionModel
 summary(interactionModel)
 ```
+## 7.3  Let us include interaction terms with transformed variables 
 
 -   Let us add more interaction terms that include transformed x variables our y variable has been transformed here as well. Our r squared increased again to 0.8373 and the residual error is now 4839. It is better slightly but there are a lot of variables which are not significant. For example, sex:smoke interaction variable's p value is 0.7829 which is significantly above 0.05. In the next step, let us remove all those variables that are not significant 
 
@@ -465,9 +468,9 @@ lm(charges~ age + children + bmi +
 summary(interactionModel)
 ```
 
-## 7.3  Let eliminate all interaction 
+## 7.4 Let Reduce the above models by eliminating some variables
 
--   Terms or the single whose p value is insignificant. For this case our starting model has a lot of variables so after removing many of the variables we will have a reduced model.
+-   remove interaction Terms or the single variables  whose p value is insignificant. For this case our starting model has a lot of variables so after removing many of the variables we will have a reduced model.
 
 -   Those variables whose p value is too high should be removed and a reduced model has to be produced.we run the reduced model below our r squared slightly decreased to 0.8332 and the adjusted r squared to 0.8244. 
 
@@ -506,7 +509,7 @@ abline(0,0)
 
 ```
 
-## 7.4 CI for  two of our chosen quantitative variables 
+## 7.5 CI for  two of our chosen quantitative variables 
 
 -   Using this regression model Let us take at least two variables and find confidence interval for the independent variables.  Let us take two such as  log(age) and bmi for example. 
 
