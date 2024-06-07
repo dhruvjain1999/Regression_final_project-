@@ -1,9 +1,3 @@
-# Regression_final_project-
-
-Certainly! Here's an easy-to-understand README file for your "Stat 615 Final_Project." Feel free to customize it further to suit your needs:
-
----
-
 # Stat 615 Final Project: Estimating Medical Costs
 
 ## Introduction
